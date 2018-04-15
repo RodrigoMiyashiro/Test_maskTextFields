@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Test_maskTextField" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OFb-SA-7A2">
+                                <rect key="frame" x="16" y="52" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="fFF-vG-hmf"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QPe-0f-xiC">
+                                <rect key="frame" x="16" y="90" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="tOh-2b-PAr"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e6i-we-LNF">
+                                <rect key="frame" x="16" y="128" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Xmc-IL-ltT"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bm3-8E-wIN">
+                                <rect key="frame" x="16" y="166" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Crf-tx-oMI"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R1E-2x-OMX">
+                                <rect key="frame" x="16" y="204" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="JJM-kk-j3j"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gum-Tm-XgR">
+                                <rect key="frame" x="16" y="242" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="CqS-cr-5Ti"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Gum-Tm-XgR" firstAttribute="top" secondItem="R1E-2x-OMX" secondAttribute="bottom" constant="8" id="4nu-cC-YU0"/>
+                            <constraint firstItem="Bm3-8E-wIN" firstAttribute="top" secondItem="e6i-we-LNF" secondAttribute="bottom" constant="8" id="6pL-hx-b0v"/>
+                            <constraint firstItem="e6i-we-LNF" firstAttribute="top" secondItem="QPe-0f-xiC" secondAttribute="bottom" constant="8" id="7Kj-HY-IPD"/>
+                            <constraint firstItem="Bm3-8E-wIN" firstAttribute="trailing" secondItem="e6i-we-LNF" secondAttribute="trailing" id="ANk-GB-vbW"/>
+                            <constraint firstItem="R1E-2x-OMX" firstAttribute="leading" secondItem="Bm3-8E-wIN" secondAttribute="leading" id="BhG-dj-pXJ"/>
+                            <constraint firstItem="e6i-we-LNF" firstAttribute="leading" secondItem="QPe-0f-xiC" secondAttribute="leading" id="CLc-kG-VVU"/>
+                            <constraint firstItem="QPe-0f-xiC" firstAttribute="top" secondItem="OFb-SA-7A2" secondAttribute="bottom" constant="8" id="J2I-Mz-8mP"/>
+                            <constraint firstItem="Bm3-8E-wIN" firstAttribute="leading" secondItem="e6i-we-LNF" secondAttribute="leading" id="RgJ-q2-KMA"/>
+                            <constraint firstItem="OFb-SA-7A2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="WqN-mW-dhs"/>
+                            <constraint firstItem="e6i-we-LNF" firstAttribute="trailing" secondItem="QPe-0f-xiC" secondAttribute="trailing" id="aKC-fU-AYz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OFb-SA-7A2" secondAttribute="trailing" constant="16" id="f9I-Mh-cPf"/>
+                            <constraint firstItem="OFb-SA-7A2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="hrx-SQ-7UZ"/>
+                            <constraint firstItem="R1E-2x-OMX" firstAttribute="trailing" secondItem="Bm3-8E-wIN" secondAttribute="trailing" id="ie4-Km-qZm"/>
+                            <constraint firstItem="QPe-0f-xiC" firstAttribute="leading" secondItem="OFb-SA-7A2" secondAttribute="leading" id="pa8-VE-vVv"/>
+                            <constraint firstItem="R1E-2x-OMX" firstAttribute="top" secondItem="Bm3-8E-wIN" secondAttribute="bottom" constant="8" id="sah-aO-r7Y"/>
+                            <constraint firstItem="Gum-Tm-XgR" firstAttribute="leading" secondItem="R1E-2x-OMX" secondAttribute="leading" id="ugY-Ns-21b"/>
+                            <constraint firstItem="QPe-0f-xiC" firstAttribute="trailing" secondItem="OFb-SA-7A2" secondAttribute="trailing" id="x9Q-Ix-evC"/>
+                            <constraint firstItem="Gum-Tm-XgR" firstAttribute="trailing" secondItem="R1E-2x-OMX" secondAttribute="trailing" id="zye-9W-n3P"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="cellPhoneTextField" destination="Bm3-8E-wIN" id="HJQ-Xk-1IA"/>
+                        <outlet property="cnpjTextField" destination="Gum-Tm-XgR" id="vau-og-VwO"/>
+                        <outlet property="cpfTextField" destination="R1E-2x-OMX" id="iSg-Mz-rYA"/>
+                        <outlet property="dateTextField" destination="QPe-0f-xiC" id="lHa-D1-UXa"/>
+                        <outlet property="phoneTextField" destination="e6i-we-LNF" id="lSx-qc-aIY"/>
+                        <outlet property="priceTextField" destination="OFb-SA-7A2" id="vNX-F7-xju"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-78" y="164"/>
+        </scene>
+    </scenes>
+</document>
