@@ -13,6 +13,10 @@
 		5BB983312082DE3300EEB5BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BB983302082DE3300EEB5BA /* Assets.xcassets */; };
 		5BB983342082DE3300EEB5BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB983322082DE3300EEB5BA /* LaunchScreen.storyboard */; };
 		5BB9833C2082DE9100EEB5BA /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB9833B2082DE9100EEB5BA /* String.swift */; };
+		6DA994E3208939CF0095241E /* Mask.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA994E0208939CF0095241E /* Mask.m */; };
+		6DA994E4208939CF0095241E /* -.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA994E1208939CF0095241E /* -.swift */; };
+		6DA994E5208939CF0095241E /* FormatText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA994E2208939CF0095241E /* FormatText.swift */; };
+		6DA994E820893DDD0095241E /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA994E720893DDD0095241E /* TestViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,13 @@
 		5BB983332082DE3300EEB5BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BB983352082DE3300EEB5BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BB9833B2082DE9100EEB5BA /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		6DA994DE208939CE0095241E /* Test_maskTextField-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Test_maskTextField-Bridging-Header.h"; sourceTree = "<group>"; };
+		6DA994DF208939CF0095241E /* Mask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mask.h; sourceTree = "<group>"; };
+		6DA994E0208939CF0095241E /* Mask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mask.m; sourceTree = "<group>"; };
+		6DA994E1208939CF0095241E /* -.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "-.swift"; sourceTree = "<group>"; };
+		6DA994E2208939CF0095241E /* FormatText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatText.swift; sourceTree = "<group>"; };
+		6DA994E620893DDD0095241E /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		6DA994E720893DDD0095241E /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +67,7 @@
 		5BB983282082DE3100EEB5BA /* Test_maskTextField */ = {
 			isa = PBXGroup;
 			children = (
+				6DA994DD208939BC0095241E /* Others */,
 				5BB983292082DE3100EEB5BA /* AppDelegate.swift */,
 				5BB9832B2082DE3100EEB5BA /* ViewController.swift */,
 				5BB9833B2082DE9100EEB5BA /* String.swift */,
@@ -65,6 +77,20 @@
 				5BB983352082DE3300EEB5BA /* Info.plist */,
 			);
 			path = Test_maskTextField;
+			sourceTree = "<group>";
+		};
+		6DA994DD208939BC0095241E /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				6DA994E1208939CF0095241E /* -.swift */,
+				6DA994E2208939CF0095241E /* FormatText.swift */,
+				6DA994DF208939CF0095241E /* Mask.h */,
+				6DA994E0208939CF0095241E /* Mask.m */,
+				6DA994DE208939CE0095241E /* Test_maskTextField-Bridging-Header.h */,
+				6DA994E620893DDD0095241E /* TestViewController.h */,
+				6DA994E720893DDD0095241E /* TestViewController.m */,
+			);
+			path = Others;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,6 +125,7 @@
 				TargetAttributes = {
 					5BB983252082DE3100EEB5BA = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
 					};
 				};
 			};
@@ -139,6 +166,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BB9833C2082DE9100EEB5BA /* String.swift in Sources */,
+				6DA994E4208939CF0095241E /* -.swift in Sources */,
+				6DA994E820893DDD0095241E /* TestViewController.m in Sources */,
+				6DA994E3208939CF0095241E /* Mask.m in Sources */,
+				6DA994E5208939CF0095241E /* FormatText.swift in Sources */,
 				5BB9832C2082DE3100EEB5BA /* ViewController.swift in Sources */,
 				5BB9832A2082DE3100EEB5BA /* AppDelegate.swift in Sources */,
 			);
@@ -284,6 +315,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Test_maskTextField/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -292,6 +324,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rmiyashiro.Test-maskTextField";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Test_maskTextField/Others/Test_maskTextField-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -301,6 +335,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Test_maskTextField/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -309,6 +344,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.rmiyashiro.Test-maskTextField";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Test_maskTextField/Others/Test_maskTextField-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
