@@ -27,6 +27,8 @@ class ViewController: UIViewController
 
         priceTextField.placeholder = updatePriceAmount(amt: 0)
         dateTextField.placeholder = updateDate(date: Date())
+        cpfTextField.placeholder = formatCPFNumber(0)
+        cnpjTextField.placeholder = "00.000.000/0001-00"
     }
 
 }
@@ -72,12 +74,12 @@ extension ViewController: UITextFieldDelegate
         
         if textField == cpfTextField
         {
-            
+            textField.text = maskCPF(textField: textField, string: string)
         }
         
         if textField == cnpjTextField
         {
-            
+            textField.text = maskCNPJ(textField: textField, string: string)
         }
         
         return false
@@ -85,6 +87,7 @@ extension ViewController: UITextFieldDelegate
     
     
     // MARK: - MASKS
+    // Price
     func maskPrice(textField: UITextField, string: String) -> String
     {
         var amt: Int = 0
@@ -96,15 +99,62 @@ extension ViewController: UITextFieldDelegate
             {
                 return textField.text ?? "0"
             }
-            
-//            priceTextField.text = updateAmount(amt: amt)
+
             return updatePriceAmount(amt: amt)!
         }
         if string == ""
         {
             amt = (removeCharacters(value: textField.text!) ?? 0) / 10
-//            priceTextField.text = amt == 0 ? "" : updateAmount(amt: amt)
             return amt == 0 ? "" : updatePriceAmount(amt: amt)!
+        }
+        
+        return textField.text ?? "0"
+    }
+    
+    // CPF
+    func maskCPF(textField: UITextField, string: String) -> String
+    {
+        var amt: Int = 0
+        if let digit = Int(string)
+        {
+            amt = (removeCharacters(value: textField.text!) ?? 0) * 10 + digit
+            
+            if amt > 999_999_999_99
+            {
+                return textField.text ?? "0"
+            }
+            
+            return formatCPFNumber(amt)!
+        }
+        if string == ""
+        {
+            amt = (removeCharacters(value: textField.text!) ?? 0) / 10
+            return amt == 0 ? "" : formatCPFNumber(amt)!
+        }
+        
+        return textField.text ?? "0"
+    }
+    
+    
+    // CNPJ
+    func maskCNPJ(textField: UITextField, string: String) -> String
+    {
+        var amt: Int = 0
+        if let digit = Int(string)
+        {
+            amt = (removeCharacters(value: textField.text!) ?? 0) * 10 + digit
+            
+            if amt > 99_999_999_9999_99
+            {
+                return textField.text ?? "0"
+            }
+            
+            return formatCNPJNumber(amt)!
+        }
+        if string == ""
+        {
+            amt = (removeCharacters(value: textField.text!) ?? 0) / 10
+            return amt == 0 ? "" : formatCNPJNumber(amt)!
         }
         
         return textField.text ?? "0"
@@ -126,6 +176,9 @@ extension ViewController: UITextFieldDelegate
     }
     
     
+    
+    
+    
     // MARK: Utils
     func removeCharacters(value: String) -> Int?
     {
@@ -136,8 +189,48 @@ extension ViewController: UITextFieldDelegate
     {
         let formatter = NumberFormatter()
         formatter.numberStyle = NumberFormatter.Style.currency
+        formatter.locale = Locale(identifier: "pt_BR")
         let amount = Double(amt / 100) + Double(amt % 100) / 100
         
+        return formatter.string(from: NSNumber(value: amount))
+    }
+    
+    
+    // CPF
+    func formatCPFNumber(_ number: Int) -> String?
+    {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.currencySymbol = ""
+        formatter.groupingSeparator = "."
+        formatter.decimalSeparator = "-"
+        let amount = Double(number / 100) + Double(number % 100) / 100
+        
+        return formatter.string(from: NSNumber(value: amount))
+    }
+    
+    
+    // CNPJ
+    func formatCNPJNumber(_ number: Int) -> String?
+    {
+//        let formatter = NumberFormatter()
+//        formatter.numberStyle = .decimal
+//        formatter.currencySymbol = ""
+//        formatter.groupingSeparator = ""
+//        formatter.decimalSeparator = "-"
+//        let amount = Double(number / 100) + Double(number % 100) / 100
+//
+//        print("-->> \(Double(number / 1000)) + \(Double(number % 100) / 100) = \(amount)")
+//        return formatter.string(from: NSNumber(value: amount))
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.currencySymbol = ""
+        formatter.groupingSeparator = ""
+        formatter.decimalSeparator = "-"
+        let amount = Double(number / 1000) + Double(number % 1000) / 1000
+        
+        print("-->> \(Double(number / 1000)) + \(Double(number % 1000) / 1000) = \(amount)")
         return formatter.string(from: NSNumber(value: amount))
     }
     
