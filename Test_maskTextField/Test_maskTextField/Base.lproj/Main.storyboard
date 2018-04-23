@@ -18,16 +18,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OFb-SA-7A2">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OFb-SA-7A2">
                                 <rect key="frame" x="16" y="52" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="fFF-vG-hmf"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QPe-0f-xiC">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QPe-0f-xiC">
                                 <rect key="frame" x="16" y="90" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -36,48 +36,59 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="tOh-2b-PAr"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e6i-we-LNF">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e6i-we-LNF">
                                 <rect key="frame" x="16" y="128" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Xmc-IL-ltT"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bm3-8E-wIN">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bm3-8E-wIN">
                                 <rect key="frame" x="16" y="166" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Crf-tx-oMI"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R1E-2x-OMX">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R1E-2x-OMX">
                                 <rect key="frame" x="16" y="204" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="JJM-kk-j3j"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gum-Tm-XgR">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gum-Tm-XgR">
                                 <rect key="frame" x="16" y="242" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="CqS-cr-5Ti"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9I4-8j-scO">
+                                <rect key="frame" x="16" y="280" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="CqS-cr-5Ti"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="yhp-a7-0U2"/>
                                 </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="9I4-8j-scO" firstAttribute="leading" secondItem="Gum-Tm-XgR" secondAttribute="leading" id="0cA-yW-z8A"/>
                             <constraint firstItem="Gum-Tm-XgR" firstAttribute="top" secondItem="R1E-2x-OMX" secondAttribute="bottom" constant="8" id="4nu-cC-YU0"/>
                             <constraint firstItem="Bm3-8E-wIN" firstAttribute="top" secondItem="e6i-we-LNF" secondAttribute="bottom" constant="8" id="6pL-hx-b0v"/>
                             <constraint firstItem="e6i-we-LNF" firstAttribute="top" secondItem="QPe-0f-xiC" secondAttribute="bottom" constant="8" id="7Kj-HY-IPD"/>
+                            <constraint firstItem="9I4-8j-scO" firstAttribute="trailing" secondItem="Gum-Tm-XgR" secondAttribute="trailing" id="9ut-Fw-gjh"/>
                             <constraint firstItem="Bm3-8E-wIN" firstAttribute="trailing" secondItem="e6i-we-LNF" secondAttribute="trailing" id="ANk-GB-vbW"/>
                             <constraint firstItem="R1E-2x-OMX" firstAttribute="leading" secondItem="Bm3-8E-wIN" secondAttribute="leading" id="BhG-dj-pXJ"/>
                             <constraint firstItem="e6i-we-LNF" firstAttribute="leading" secondItem="QPe-0f-xiC" secondAttribute="leading" id="CLc-kG-VVU"/>
@@ -87,6 +98,7 @@
                             <constraint firstItem="e6i-we-LNF" firstAttribute="trailing" secondItem="QPe-0f-xiC" secondAttribute="trailing" id="aKC-fU-AYz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OFb-SA-7A2" secondAttribute="trailing" constant="16" id="f9I-Mh-cPf"/>
                             <constraint firstItem="OFb-SA-7A2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="hrx-SQ-7UZ"/>
+                            <constraint firstItem="9I4-8j-scO" firstAttribute="top" secondItem="Gum-Tm-XgR" secondAttribute="bottom" constant="8" id="iEw-Jq-STl"/>
                             <constraint firstItem="R1E-2x-OMX" firstAttribute="trailing" secondItem="Bm3-8E-wIN" secondAttribute="trailing" id="ie4-Km-qZm"/>
                             <constraint firstItem="QPe-0f-xiC" firstAttribute="leading" secondItem="OFb-SA-7A2" secondAttribute="leading" id="pa8-VE-vVv"/>
                             <constraint firstItem="R1E-2x-OMX" firstAttribute="top" secondItem="Bm3-8E-wIN" secondAttribute="bottom" constant="8" id="sah-aO-r7Y"/>
@@ -98,6 +110,7 @@
                     </view>
                     <connections>
                         <outlet property="cellPhoneTextField" destination="Bm3-8E-wIN" id="HJQ-Xk-1IA"/>
+                        <outlet property="cepTextField" destination="9I4-8j-scO" id="reP-1W-Jr4"/>
                         <outlet property="cnpjTextField" destination="Gum-Tm-XgR" id="vau-og-VwO"/>
                         <outlet property="cpfTextField" destination="R1E-2x-OMX" id="iSg-Mz-rYA"/>
                         <outlet property="dateTextField" destination="QPe-0f-xiC" id="lHa-D1-UXa"/>

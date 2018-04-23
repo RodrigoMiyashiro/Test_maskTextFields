@@ -18,6 +18,7 @@ class ViewController: UIViewController
     @IBOutlet weak var cellPhoneTextField: UITextField!
     @IBOutlet weak var cpfTextField: UITextField!
     @IBOutlet weak var cnpjTextField: UITextField!
+    @IBOutlet weak var cepTextField: UITextField!
     
     
 
@@ -25,10 +26,13 @@ class ViewController: UIViewController
     {
         super.viewDidLoad()
 
-        priceTextField.placeholder = updatePriceAmount(amt: 0)
-        dateTextField.placeholder = updateDate(date: Date())
-        cpfTextField.placeholder = formatCPFNumber(0)
+        priceTextField.placeholder = Mask.updatePriceAmount(amt: 0)
+        dateTextField.placeholder = Mask.updateDate(date: Date())
+        phoneTextField.placeholder = "(00) 0000-0000"
+        cellPhoneTextField.placeholder = "(00) 0 0000-0000"
+        cpfTextField.placeholder = "000.000.000-00" //formatCPFNumber(0)
         cnpjTextField.placeholder = "00.000.000/0001-00"
+        cepTextField.placeholder = "00.000-000"
     }
 
 }
@@ -54,197 +58,36 @@ extension ViewController: UITextFieldDelegate
     {
         if textField == priceTextField
         {
-            textField.text =  maskPrice(textField: textField, string: string)
+            textField.text =  Mask.maskPrice(textField: textField, string: string)
         }
-        
-//        if textField == dateTextField
-//        {
-//
-//        }
         
         if textField == phoneTextField
         {
-            
+            textField.text = Mask.maskPhone(textField: textField, string: string)
         }
         
         if textField == cellPhoneTextField
         {
-            
+            textField.text = Mask.maskPhone(textField: textField, string: string)
         }
         
         if textField == cpfTextField
         {
-            textField.text = maskCPF(textField: textField, string: string)
+            textField.text = Mask.maskCPF(textField: textField, string: string)
         }
         
         if textField == cnpjTextField
         {
-            textField.text = maskCNPJ(textField: textField, string: string)
+            textField.text = Mask.maskCNPJ(textField: textField, string: string)
+        }
+        
+        if textField == cepTextField
+        {
+//            textField.text = 
         }
         
         return false
     }
-    
-    
-    // MARK: - MASKS
-    // Price
-    func maskPrice(textField: UITextField, string: String) -> String
-    {
-        var amt: Int = 0
-        if let digit = Int(string)
-        {
-            amt = (removeCharacters(value: textField.text!) ?? 0) * 10 + digit
-            
-            if amt > 1_000_000_000_00
-            {
-                return textField.text ?? "0"
-            }
-
-            return updatePriceAmount(amt: amt)!
-        }
-        if string == ""
-        {
-            amt = (removeCharacters(value: textField.text!) ?? 0) / 10
-            return amt == 0 ? "" : updatePriceAmount(amt: amt)!
-        }
-        
-        return textField.text ?? "0"
-    }
-    
-    // CPF
-    func maskCPF(textField: UITextField, string: String) -> String
-    {
-        var amt: Int = 0
-        if let digit = Int(string)
-        {
-            amt = (removeCharacters(value: textField.text!) ?? 0) * 10 + digit
-            
-            if amt > 999_999_999_99
-            {
-                return textField.text ?? "0"
-            }
-            
-            return formatCPFNumber(amt)!
-        }
-        if string == ""
-        {
-            amt = (removeCharacters(value: textField.text!) ?? 0) / 10
-            return amt == 0 ? "" : formatCPFNumber(amt)!
-        }
-        
-        return textField.text ?? "0"
-    }
-    
-    
-    // CNPJ
-    func maskCNPJ(textField: UITextField, string: String) -> String
-    {
-        var amt: Int = 0
-        if let digit = Int(string)
-        {
-            amt = (removeCharacters(value: textField.text!) ?? 0) * 10 + digit
-            
-            if amt > 99_999_999_9999_99
-            {
-                return textField.text ?? "0"
-            }
-            
-            return formatCNPJNumber(amt)!
-        }
-        if string == ""
-        {
-            amt = (removeCharacters(value: textField.text!) ?? 0) / 10
-            return amt == 0 ? "" : formatCNPJNumber(amt)!
-        }
-        
-        return textField.text ?? "0"
-    }
-    
-    
-    @objc func datePicker(textField: UITextField)
-    {
-        let datePicker = UIDatePicker()
-        datePicker.datePickerMode = .date
-        datePicker.addTarget(self, action: #selector(datePickerValueChange(sender:)), for: UIControlEvents.valueChanged)
-        textField.inputView = datePicker
-    }
-    
-    @objc func datePickerValueChange(sender: UIDatePicker)
-    {
-        let date = updateDate(date: sender.date)
-        self.dateTextField.text = date ?? updateDate(date: Date())
-    }
-    
-    
-    
-    
-    
-    // MARK: Utils
-    func removeCharacters(value: String) -> Int?
-    {
-        return Int(value.replacingOccurrences(of: "R$", with: "").replacingOccurrences(of: "$", with: "").replacingOccurrences(of: ",", with: "").replacingOccurrences(of: ".", with: "").replacingOccurrences(of: "/", with: "").replacingOccurrences(of: "-", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: ""))
-    }
-    
-    func updatePriceAmount(amt: Int) -> String?
-    {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = NumberFormatter.Style.currency
-        formatter.locale = Locale(identifier: "pt_BR")
-        let amount = Double(amt / 100) + Double(amt % 100) / 100
-        
-        return formatter.string(from: NSNumber(value: amount))
-    }
-    
-    
-    // CPF
-    func formatCPFNumber(_ number: Int) -> String?
-    {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.currencySymbol = ""
-        formatter.groupingSeparator = "."
-        formatter.decimalSeparator = "-"
-        let amount = Double(number / 100) + Double(number % 100) / 100
-        
-        return formatter.string(from: NSNumber(value: amount))
-    }
-    
-    
-    // CNPJ
-    func formatCNPJNumber(_ number: Int) -> String?
-    {
-//        let formatter = NumberFormatter()
-//        formatter.numberStyle = .decimal
-//        formatter.currencySymbol = ""
-//        formatter.groupingSeparator = ""
-//        formatter.decimalSeparator = "-"
-//        let amount = Double(number / 100) + Double(number % 100) / 100
-//
-//        print("-->> \(Double(number / 1000)) + \(Double(number % 100) / 100) = \(amount)")
-//        return formatter.string(from: NSNumber(value: amount))
-        
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.currencySymbol = ""
-        formatter.groupingSeparator = ""
-        formatter.decimalSeparator = "-"
-        let amount = Double(number / 1000) + Double(number % 1000) / 1000
-        
-        print("-->> \(Double(number / 1000)) + \(Double(number % 1000) / 1000) = \(amount)")
-        return formatter.string(from: NSNumber(value: amount))
-    }
-    
-    
-    // MARK: UpdateDate
-    func updateDate(date: Date) -> String?
-    {
-        let dateFormatter = DateFormatter()
-//        dateFormatter.dateStyle = "dd/MM/yyyy" //.short
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        
-        return dateFormatter.string(from: date)
-    }
-    
     
     // MARK: DatePicker Toolbar
     func datePickerToolBar(textField: UITextField)
@@ -282,8 +125,21 @@ extension ViewController: UITextFieldDelegate
         let dateformatter = DateFormatter()
         dateformatter.dateStyle = DateFormatter.Style.medium
         dateformatter.timeStyle = DateFormatter.Style.none
-        dateTextField.text = updateDate(date: Date())//dateformatter.string(from: NSDate() as Date)
+        dateTextField.text = Mask.updateDate(date: Date())//dateformatter.string(from: NSDate() as Date)
         dateTextField.resignFirstResponder()
     }
     
+    @objc func datePicker(textField: UITextField)
+    {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.addTarget(self, action: #selector(datePickerValueChange(sender:)), for: UIControlEvents.valueChanged)
+        textField.inputView = datePicker
+    }
+    
+    @objc func datePickerValueChange(sender: UIDatePicker)
+    {
+        let date = Mask.updateDate(date: sender.date)
+        self.dateTextField.text = date ?? Mask.updateDate(date: Date())
+    }
 }
