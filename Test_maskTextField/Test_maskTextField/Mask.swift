@@ -39,14 +39,12 @@ class Mask
     // CPF
     static func maskCPF(textField: UITextField, string: String) -> String
     {
-        var amt: Int = 0
-        if let digit = Int(string)
+        var amt: String = ""
+        if let _ = Int(string)
         {
-            amt = (removeCharacters(value: textField.text!) ?? 0) * 10 + digit
+            amt = getStringClear(value: textField.text!)! + string
             
-            print("-->> \(String((removeCharacters(value: textField.text!) ?? 0) * 10) + string)")
-            
-            if amt > 1_000_000_000_00
+            if amt.count > 11
             {
                 return textField.text ?? "0"
             }
@@ -55,8 +53,8 @@ class Mask
         }
         if string == ""
         {
-            amt = (removeCharacters(value: textField.text!) ?? 0) / 10
-            return amt == 0 ? "" : formatCPFNumber(amt)!
+            amt = removeLastCharater(value: textField.text!) ?? ""
+            return amt == "" ? "" : formatCPFNumber(amt)!
         }
         
         return textField.text ?? "0"
@@ -66,22 +64,22 @@ class Mask
     // CNPJ
     static func maskCNPJ(textField: UITextField, string: String) -> String
     {
-        var amt: Int = 0
-        if let digit = Int(string)
+        var amt: String = ""
+        if let _ = Int(string)
         {
-            amt = (removeCharacters(value: textField.text!) ?? 0) * 10 + digit
+            amt = getStringClear(value: textField.text!)! + string
             
-            if amt > 100_000_000_000_000
+            if amt.count > 14
             {
                 return textField.text ?? "0"
             }
             
-            return formatCNPJNumber(number: String(amt))!
+            return formatCNPJNumber(number: amt)!
         }
         if string == ""
         {
-            amt = (removeCharacters(value: textField.text!) ?? 0) / 10
-            return amt == 0 ? "" : formatCNPJNumber(number: String(amt))!
+            amt = removeLastCharater(value: textField.text!) ?? ""
+            return amt == "" ? "" : formatCNPJNumber(number: amt)!
         }
         
         return textField.text ?? "0"
@@ -91,21 +89,46 @@ class Mask
     // Phone
     static func maskPhone(textField: UITextField, string: String) -> String
     {
-        var amt: Int = 0
-        if let digit = Int(string)
+        var amt: String = ""
+        if let _ = Int(string)
         {
-            amt = (removeCharacters(value: textField.text!) ?? 0) * 10 + digit
-            if amt > 100_000_000_000
+            amt = getStringClear(value: textField.text!)! + string
+            
+            if amt.count > 11
             {
-                return textField.text ?? ""
+                return textField.text ?? "0"
             }
             
-            return formatPhone(number: String(amt))!
+            return formatPhone(number: amt)!
         }
         if string == ""
         {
-            amt = (removeCharacters(value: textField.text!) ?? 0) / 10
-            return amt == 0 ? "" : formatPhone(number: String(amt))!
+            amt = removeLastCharater(value: textField.text!) ?? ""
+            return amt == "" ? "" : formatPhone(number: amt)!
+        }
+        
+        return textField.text ?? "0"
+    }
+    
+    // CEP
+    static func maskCEP(textField: UITextField, string: String) -> String
+    {
+        var amt: String = ""
+        if let _ = Int(string)
+        {
+            amt = getStringClear(value: textField.text!)! + string
+            
+            if amt.count > 8
+            {
+                return textField.text ?? "0"
+            }
+            
+            return formatCEP(number: amt)!
+        }
+        if string == ""
+        {
+            amt = removeLastCharater(value: textField.text!) ?? ""
+            return amt == "" ? "" : formatCEP(number: amt)!
         }
         
         return textField.text ?? "0"
@@ -116,6 +139,19 @@ class Mask
     static func removeCharacters(value: String) -> Int?
     {
         return Int(value.replacingOccurrences(of: "R$", with: "").replacingOccurrences(of: "$", with: "").replacingOccurrences(of: ",", with: "").replacingOccurrences(of: ".", with: "").replacingOccurrences(of: "/", with: "").replacingOccurrences(of: "-", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: " ", with: ""))
+    }
+    
+    static func getStringClear(value: String) -> String?
+    {
+        return value.replacingOccurrences(of: "R$", with: "").replacingOccurrences(of: "$", with: "").replacingOccurrences(of: ",", with: "").replacingOccurrences(of: ".", with: "").replacingOccurrences(of: "/", with: "").replacingOccurrences(of: "-", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: " ", with: "")
+    }
+    
+    static func removeLastCharater(value: String) -> String?
+    {
+        var strArray = Array(getStringClear(value: value)!)
+        strArray.removeLast()
+        
+        return strArray.map({"\($0)"}).joined(separator: "")
     }
     
     static func updatePriceAmount(amt: Int) -> String?
@@ -130,16 +166,24 @@ class Mask
     
     
     // CPF
-    static func formatCPFNumber(_ number: Int) -> String?
+    static func formatCPFNumber(_ number: String) -> String?
     {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.currencySymbol = ""
-        formatter.groupingSeparator = "."
-        formatter.decimalSeparator = "-"
-        let amount = Double(number / 100) + Double(number % 100) / 100
+        var strNumber = number
         
-        return formatter.string(from: NSNumber(value: amount))
+        if strNumber.count > 9
+        {
+            strNumber.insert("-", at: String.Index.init(encodedOffset: 9))
+        }
+        if strNumber.count > 6
+        {
+            strNumber.insert(".", at: String.Index.init(encodedOffset: 6))
+        }
+        if strNumber.count > 3
+        {
+            strNumber.insert(".", at: String.Index.init(encodedOffset: 3))
+        }
+        
+        return strNumber
     }
     
     
@@ -197,6 +241,23 @@ class Mask
             {
                 strNumber.insert("(", at: String.Index.init(encodedOffset: 0))
             }
+        }
+        
+        return strNumber
+    }
+    
+    // CEP
+    static func formatCEP(number: String) -> String?
+    {
+        var strNumber = number
+        
+        if strNumber.count > 5
+        {
+            strNumber.insert("-", at: String.Index.init(encodedOffset: 5))
+        }
+        if strNumber.count > 2
+        {
+            strNumber.insert(".", at: String.Index.init(encodedOffset: 2))
         }
         
         return strNumber

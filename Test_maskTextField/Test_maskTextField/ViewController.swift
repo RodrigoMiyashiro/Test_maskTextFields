@@ -83,7 +83,7 @@ extension ViewController: UITextFieldDelegate
         
         if textField == cepTextField
         {
-//            textField.text = 
+            textField.text = Mask.maskCEP(textField: textField, string: string)
         }
         
         return false
